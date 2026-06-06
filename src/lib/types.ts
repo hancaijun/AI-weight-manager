@@ -37,7 +37,7 @@ export interface Exercise {
   name: string
   emoji: string
   durationMin: number
-  intensity: string    // 低/中等/高
+  intensity: '低' | '中等' | '高'
   met: number
   kcalBurned: number
   description: string
@@ -56,7 +56,7 @@ export interface DayPlan {
 
 export interface PlanResult {
   bmi: number
-  bmiCategory: string
+  bmiCategory: '偏瘦' | '正常' | '超重' | '肥胖'
   bmiColor: string      // tailwind color class
   tdee: number
   targetKcal: number
