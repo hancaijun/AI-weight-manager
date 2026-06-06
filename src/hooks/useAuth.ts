@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { User, Session } from '@supabase/supabase-js'
 import { supabase, isSupabaseConfigured } from '../lib/supabase'
+import { usePlanStore } from '../store/usePlanStore'
 
 export interface AuthState {
   user: User | null
@@ -71,9 +72,9 @@ export function useAuth() {
     }
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) return { error: translateError(error.message) }
-    // Load user data after login
+    // Load user data from cloud into store
     if (data.user) {
-      await loadUserData(data.user.id)
+      await usePlanStore.getState().loadFromCloud()
     }
     return { error: null }
   }, [])
