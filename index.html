@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="description" content="科学减重，定制你的每周饮食与运动计划" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="体重管理" />
+    <link rel="apple-touch-icon" href="/AI-weight-manager/icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/AI-weight-manager/icon.svg" />
+    <link rel="manifest" href="/AI-weight-manager/manifest.json" />
+    <title>健康体重管理</title>
+    <script type="module" crossorigin src="/AI-weight-manager/assets/index-CtRFw35b.js"></script>
+    <link rel="stylesheet" crossorigin href="/AI-weight-manager/assets/index-Cm8HziNV.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Register service worker for PWA offline support
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {})
+        })
+      }
+    </script>
+  </body>
+</html>
