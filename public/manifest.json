@@ -2,14 +2,14 @@
   "name": "健康体重管理",
   "short_name": "体重管理",
   "description": "科学减重，定制你的每周饮食与运动计划",
-  "start_url": "/",
+  "start_url": "/AI-weight-manager/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f8fafc",
   "theme_color": "#6366f1",
   "icons": [
     {
-      "src": "/icon.svg",
+      "src": "/AI-weight-manager/icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
