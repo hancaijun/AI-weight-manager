@@ -1,5 +1,5 @@
 // src/lib/meal-plan.ts
-import type { Macros, Meal, MealItem } from './types'
+import type { Meal, MealItem } from './types'
 import { FOOD_DB, type FoodItem } from './foods'
 
 const MEAL_CONFIG: { type: Meal['type']; label: string; percent: number }[] = [

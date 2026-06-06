@@ -37,7 +37,7 @@ export interface Exercise {
   name: string
   emoji: string
   durationMin: number
-  intensity: '低' | '中等' | '高'
+  intensity: '低' | '中等' | '较高' | '高'
   met: number
   kcalBurned: number
   description: string

@@ -1,8 +1,8 @@
 import type { Macros } from '../../lib/types'
 
-interface Props { macros: Macros; totalKcal: number }
+interface Props { macros: Macros }
 
-export default function MacroBar({ macros, totalKcal }: Props) {
+export default function MacroBar({ macros }: Props) {
   const carbKcal = macros.carbsG * 4
   const proteinKcal = macros.proteinG * 4
   const fatKcal = macros.fatG * 9

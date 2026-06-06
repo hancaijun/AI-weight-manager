@@ -25,7 +25,7 @@ export default function DayCard({ day }: Props) {
       </div>
 
       {/* Macro bar */}
-      {macros && <div className="mb-3"><MacroBar macros={macros} totalKcal={day.totalMealKcal} /></div>}
+      {macros && <div className="mb-3"><MacroBar macros={macros} /></div>}
 
       {/* Meals */}
       <div className="mb-1">

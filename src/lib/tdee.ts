@@ -1,4 +1,4 @@
-import type { UserData, GoalData, Macros, PlanResult } from './types'
+import type { UserData, GoalData, Macros } from './types'
 
 /** BMI = weight / (height/100)² */
 export function calcBMI(weight: number, height: number): number {
@@ -6,7 +6,7 @@ export function calcBMI(weight: number, height: number): number {
   return +(weight / (h * h)).toFixed(1)
 }
 
-export function getBMICategory(bmi: number): { category: string; color: string } {
+export function getBMICategory(bmi: number): { category: '偏瘦' | '正常' | '超重' | '肥胖'; color: string } {
   if (bmi < 18.5) return { category: '偏瘦', color: 'text-blue-500' }
   if (bmi < 24)   return { category: '正常', color: 'text-green-500' }
   if (bmi < 28)   return { category: '超重', color: 'text-amber-500' }
@@ -42,7 +42,7 @@ export function calcMacros(kcal: number): Macros {
 
 /** Safety checks */
 export function getHealthWarning(
-  deficit: number, dailyKcal: number, gender: 'male' | 'female',
+  _deficit: number, dailyKcal: number, gender: 'male' | 'female',
   weeklyLossKg: number, bmi: number
 ): string | null {
   if (bmi < 18.5) return '你的 BMI 属于偏瘦范围，不建议继续减重。建议先咨询医生或营养师。'
@@ -63,7 +63,7 @@ export function isHealthy(
 
 /** Summary stats for display */
 export function calcSummary(user: UserData, goal: GoalData): {
-  bmi: number; bmiCategory: string; bmiColor: string
+  bmi: number; bmiCategory: '偏瘦' | '正常' | '超重' | '肥胖'; bmiColor: string
   bmr: number; tdee: number; deficit: number
   targetKcal: number; macros: Macros
   weeklyLossKg: number; isHealthyPace: boolean; healthWarning: string | null

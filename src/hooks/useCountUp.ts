@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 export function useCountUp(target: number, durationMs: number = 1200): number {
   const [value, setValue] = useState(0)
-  const frameRef = useRef<number>()
+  const frameRef = useRef<number | null>(null)
 
   useEffect(() => {
     const start = performance.now()

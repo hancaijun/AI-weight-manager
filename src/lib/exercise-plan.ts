@@ -1,7 +1,7 @@
 // src/lib/exercise-plan.ts
-import type { Exercise, DayPlan } from './types'
+import type { Exercise } from './types'
 
-const CARDIO_EXERCISES: { name: string; emoji: string; met: number; intensity: string; description: string }[] = [
+const CARDIO_EXERCISES: { name: string; emoji: string; met: number; intensity: '低' | '中等' | '较高' | '高'; description: string }[] = [
   { name: '快走',   emoji: '🚶', met: 4.3, intensity: '中等', description: '保持 5-6 km/h 的速度，摆臂自然' },
   { name: '慢跑',   emoji: '🏃', met: 7.0, intensity: '较高', description: '心率保持在 130-150 bpm，能说话但不能唱歌' },
   { name: '跳绳',   emoji: '🪢', met: 11.0, intensity: '高', description: '每组 2 分钟，组间休息 30 秒' },
@@ -10,7 +10,7 @@ const CARDIO_EXERCISES: { name: string; emoji: string; met: number; intensity: s
   { name: '椭圆机', emoji: '🏋️', met: 5.0, intensity: '中等', description: '阻力和速度结合，保持心率稳定' },
 ]
 
-const STRENGTH_EXERCISES: { name: string; emoji: string; met: number; intensity: string; description: string }[] = [
+const STRENGTH_EXERCISES: { name: string; emoji: string; met: number; intensity: '低' | '中等' | '较高' | '高'; description: string }[] = [
   { name: '深蹲',     emoji: '🦵', met: 5.0, intensity: '中等', description: '双脚与肩同宽，膝盖不超脚尖，3 组 × 15 次' },
   { name: '俯卧撑',   emoji: '💪', met: 3.8, intensity: '中等', description: '宽距或窄距，3 组 × 力竭' },
   { name: '平板支撑', emoji: '🧘', met: 3.0, intensity: '低', description: '核心收紧，3 组 × 30-60 秒' },
