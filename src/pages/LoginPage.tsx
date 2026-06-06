@@ -36,9 +36,10 @@ export default function LoginPage() {
       setError(null)
       setMode('login')
       setPassword('')
+    } else {
+      // Login success — navigate to plan page so user sees immediate feedback
+      navigate('/plan')
     }
-    // On successful login, the auth state change listener will fire
-    // and the router guard in App.tsx will redirect to /plan
   }
 
   return (
