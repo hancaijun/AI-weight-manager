@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../hooks/useAuth'
+import { usePlanStore } from '../store/usePlanStore'
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -37,8 +38,13 @@ export default function LoginPage() {
       setMode('login')
       setPassword('')
     } else {
-      // Login success — navigate to plan page so user sees immediate feedback
-      navigate('/plan')
+      // Login success — jump to plan if data exists, else start onboarding
+      const planResult = usePlanStore.getState().planResult
+      if (planResult?.weeklyPlan?.length) {
+        navigate('/plan')
+      } else {
+        navigate('/input')
+      }
     }
   }
 
