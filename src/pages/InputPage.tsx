@@ -24,6 +24,11 @@ export default function InputPage() {
 
   const canNext = gender && Number(height) > 100 && Number(weight) > 30 && Number(age) > 10
 
+  const handleBack = () => {
+    setStep('welcome')
+    navigate(-1)
+  }
+
   const handleNext = () => {
     const data: UserData = { gender, height: Number(height), weight: Number(weight), age: Number(age) }
     setUserData(data)
@@ -33,7 +38,20 @@ export default function InputPage() {
 
   return (
     <div className="px-4 pt-4">
-      <ProgressBar current={0} total={4} labels={STEPS} />
+      <div className="flex items-center gap-1 mb-4">
+        <button
+          onClick={handleBack}
+          className="p-2 -ml-2 text-slate-400 hover:text-slate-600 active:text-indigo-600 transition-colors rounded-lg hover:bg-slate-100"
+          aria-label="返回"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 16L6 10L12 4" />
+          </svg>
+        </button>
+        <div className="flex-1">
+          <ProgressBar current={0} total={4} labels={STEPS} />
+        </div>
+      </div>
 
       <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
         <h2 className="text-xl font-bold text-slate-800 mt-6 mb-1">告诉我你的身体状况 👋</h2>

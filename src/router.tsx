@@ -6,6 +6,7 @@ import GoalPage from './pages/GoalPage'
 import SummaryPage from './pages/SummaryPage'
 import PlanPage from './pages/PlanPage'
 import TrackerPage from './pages/TrackerPage'
+import LoginPage from './pages/LoginPage'
 
 export const router = createHashRouter([
   {
@@ -19,6 +20,7 @@ export const router = createHashRouter([
       { path: 'summary', element: <SummaryPage /> },
       { path: 'plan', element: <PlanPage /> },
       { path: 'track', element: <TrackerPage /> },
+      { path: 'login', element: <LoginPage /> },
     ],
   },
 ])

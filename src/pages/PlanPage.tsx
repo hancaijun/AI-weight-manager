@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { usePlanStore } from '../store/usePlanStore'
+import { useAuth } from '../hooks/useAuth'
 import BottomNav from '../components/ui/BottomNav'
 import DayCard from '../components/plan/DayCard'
 
@@ -9,6 +10,7 @@ export default function PlanPage() {
   const navigate = useNavigate()
   const planResult = usePlanStore((s) => s.planResult)
   const reset = usePlanStore((s) => s.reset)
+  const { user } = useAuth()
   const [activeDay, setActiveDay] = useState(0)
 
   if (!planResult) {
@@ -38,7 +40,15 @@ export default function PlanPage() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white px-4 pt-8 pb-5 rounded-b-3xl"
       >
-        <p className="text-xs text-indigo-200 mb-1">📅 本周计划</p>
+        <div className="flex items-center justify-between mb-1">
+          <p className="text-xs text-indigo-200">📅 本周计划</p>
+          {user && (
+            <span className="text-[10px] text-indigo-200/70 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-300" />
+              云端同步
+            </span>
+          )}
+        </div>
         <h1 className="text-xl font-bold mb-3">目标体重的健康之旅 💪</h1>
         <div className="flex gap-2">
           <div className="flex-1 bg-white/15 rounded-xl p-2.5 text-center">

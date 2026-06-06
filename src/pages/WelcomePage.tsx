@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { usePlanStore } from '../store/usePlanStore'
+import { useAuth } from '../hooks/useAuth'
 
 export default function WelcomePage() {
   const navigate = useNavigate()
   const setStep = usePlanStore((s) => s.setStep)
+  const planResult = usePlanStore((s) => s.planResult)
+  const { user } = useAuth()
 
   const handleStart = () => {
     setStep('input')
@@ -58,13 +61,43 @@ export default function WelcomePage() {
         开始定制计划 →
       </motion.button>
 
+      {/* Login / Profile section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1 }}
+        className="mt-4 space-y-2"
+      >
+        {user ? (
+          <div className="flex items-center gap-2 text-sm text-slate-500 bg-slate-50 rounded-xl px-4 py-2">
+            <span className="w-2 h-2 rounded-full bg-green-400" />
+            <span className="truncate max-w-[200px]">{user.email}</span>
+          </div>
+        ) : (
+          <button
+            onClick={() => navigate('/login')}
+            className="text-sm text-indigo-500 hover:text-indigo-600 transition-colors"
+          >
+            已有账号？登录同步数据 →
+          </button>
+        )}
+        {planResult && (
+          <button
+            onClick={() => navigate('/plan')}
+            className="block text-sm text-slate-400 hover:text-slate-500 transition-colors"
+          >
+            查看已有计划 →
+          </button>
+        )}
+      </motion.div>
+
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
         className="text-xs text-slate-400 mt-6"
       >
-        🧑‍⚕️ 基于 Mifflin-St Jeor 科学公式 · 数据仅保存在你的设备上
+        🧑‍⚕️ 基于 Mifflin-St Jeor 科学公式 · {user ? '数据云端同步' : '数据仅保存在你的设备上'}
       </motion.p>
     </div>
   )

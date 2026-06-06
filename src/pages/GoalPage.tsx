@@ -19,6 +19,11 @@ export default function GoalPage() {
   const weeklyLoss = weeks > 0 ? +(loss / weeks).toFixed(1) : 0
   const isHealthy = weeklyLoss <= 1 && weeklyLoss >= 0.25
 
+  const handleBack = () => {
+    setStep('input')
+    navigate(-1)
+  }
+
   const handleNext = () => {
     setGoalData({ targetWeight, weeks })
     setStep('summary')
@@ -27,7 +32,20 @@ export default function GoalPage() {
 
   return (
     <div className="px-4 pt-4">
-      <ProgressBar current={1} total={4} labels={STEPS} />
+      <div className="flex items-center gap-1 mb-4">
+        <button
+          onClick={handleBack}
+          className="p-2 -ml-2 text-slate-400 hover:text-slate-600 active:text-indigo-600 transition-colors rounded-lg hover:bg-slate-100"
+          aria-label="返回"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 16L6 10L12 4" />
+          </svg>
+        </button>
+        <div className="flex-1">
+          <ProgressBar current={1} total={4} labels={STEPS} />
+        </div>
+      </div>
 
       <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
         <h2 className="text-xl font-bold text-slate-800 mt-6 mb-1">你的目标是什么？🎯</h2>
